@@ -45,7 +45,7 @@ public class CursoEntity implements Serializable {
 	@Column(name="freq")
 	private int frequencia;
 	
-	@OneToMany(fetch= FetchType.LAZY)
+	@OneToMany(fetch= FetchType.EAGER)
 	@JoinColumn(name="materia_id")
 	private List<MateriaEntity> materias;
 

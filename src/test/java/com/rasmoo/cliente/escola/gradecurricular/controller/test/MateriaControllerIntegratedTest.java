@@ -80,7 +80,7 @@ public class MateriaControllerIntegratedTest {
 	@Test
 	public void testListarMaterias() {
 
-		ResponseEntity<Response<List<MateriaDto>>> materias = restTemplate.exchange(
+		ResponseEntity<Response<List<MateriaDto>>> materias = restTemplate.withBasicAuth("rasmoo", "msgradecurricular").exchange(
 				"http://localhost:" + this.port + "/materia/", HttpMethod.GET, null,
 				new ParameterizedTypeReference<Response<List<MateriaDto>>>() {
 				});
@@ -94,7 +94,7 @@ public class MateriaControllerIntegratedTest {
 	@Test
 	public void testConsultarMateriasPorHoraMinima() {
 
-		ResponseEntity<Response<List<MateriaDto>>> materias = restTemplate.exchange(
+		ResponseEntity<Response<List<MateriaDto>>> materias = restTemplate.withBasicAuth("rasmoo", "msgradecurricular").exchange(
 				"http://localhost:" + this.port + "/materia/horario-minimo/80", HttpMethod.GET, null,
 				new ParameterizedTypeReference<Response<List<MateriaDto>>>() {
 				});
@@ -106,7 +106,7 @@ public class MateriaControllerIntegratedTest {
 	@Test
 	public void testConsultarMateriasPorFrequencia() {
 
-		ResponseEntity<Response<List<MateriaDto>>> materias = restTemplate.exchange(
+		ResponseEntity<Response<List<MateriaDto>>> materias = restTemplate.withBasicAuth("rasmoo", "msgradecurricular").exchange(
 				"http://localhost:" + this.port + "/materia/frequencia/1", HttpMethod.GET, null,
 				new ParameterizedTypeReference<Response<List<MateriaDto>>>() {
 				});
@@ -122,7 +122,7 @@ public class MateriaControllerIntegratedTest {
 		List<MateriaEntity> materiasList = this.materiaRepository.findAll();
 		Long id = materiasList.get(0).getId();
 		
-		ResponseEntity<Response<MateriaDto>> materias = restTemplate.exchange(
+		ResponseEntity<Response<MateriaDto>> materias = restTemplate.withBasicAuth("rasmoo", "msgradecurricular").exchange(
 				"http://localhost:" + this.port + "/materia/"+id, HttpMethod.GET, null,
 				new ParameterizedTypeReference<Response<MateriaDto>>() {
 				});
@@ -143,7 +143,7 @@ public class MateriaControllerIntegratedTest {
 		
 		HttpEntity<MateriaEntity> request = new HttpEntity<>(materia);
 		
-		ResponseEntity<Response<Boolean>> materias = restTemplate.exchange(
+		ResponseEntity<Response<Boolean>> materias = restTemplate.withBasicAuth("rasmoo", "msgradecurricular").exchange(
 				"http://localhost:" + this.port + "/materia/", HttpMethod.PUT, request,
 				new ParameterizedTypeReference<Response<Boolean>>() {
 				});
@@ -165,7 +165,7 @@ public class MateriaControllerIntegratedTest {
 		
 		HttpEntity<MateriaEntity> request = new HttpEntity<>(m4);
 		
-		ResponseEntity<Response<Boolean>> materias = restTemplate.exchange(
+		ResponseEntity<Response<Boolean>> materias = restTemplate.withBasicAuth("rasmoo", "msgradecurricular").exchange(
 				"http://localhost:" + this.port + "/materia/", HttpMethod.POST, request,
 				new ParameterizedTypeReference<Response<Boolean>>() {
 				});
@@ -182,7 +182,7 @@ public class MateriaControllerIntegratedTest {
 		List<MateriaEntity> materiasList = this.materiaRepository.findAll();
 		Long id = materiasList.get(0).getId();
 		
-		ResponseEntity<Response<Boolean>> materias = restTemplate.exchange(
+		ResponseEntity<Response<Boolean>> materias = restTemplate.withBasicAuth("rasmoo", "msgradecurricular").exchange(
 				"http://localhost:" + this.port + "/materia/"+id, HttpMethod.DELETE, null,
 				new ParameterizedTypeReference<Response<Boolean>>() {
 				});
